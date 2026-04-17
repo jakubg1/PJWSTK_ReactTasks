@@ -36,7 +36,7 @@ function WatchedBadge({watched}) {
 
 function FilmCard({title, year, genre, rating, watched}) {
   return (
-    <div class="FilmCard">
+    <div className="FilmCard">
       <h3>{title} ({year})</h3>
       <GenreBadge genre={genre}/>
       <RatingStars rating={rating}/>
@@ -47,7 +47,7 @@ function FilmCard({title, year, genre, rating, watched}) {
 
 function FilmList({title, films}) {
   return (
-    <div class="FilmList">
+    <div className="FilmList">
       <h2>{title}</h2>
       <ul>
         {films.map((f) => <FilmCard key={f.id} title={f.title} year={f.year} genre={f.genre} rating={f.rating} watched={f.watched}/>)}
@@ -58,7 +58,7 @@ function FilmList({title, films}) {
 
 function App() {
   return (
-    <div class="App">
+    <div className="App">
       <FilmList title="Obejrzane" films={FILMS.filter((f) => f.watched)}/>
       <FilmList title="Do obejrzenia" films={FILMS.filter((f) => !f.watched)}/>
     </div>
