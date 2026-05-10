@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 function Nav() {
   const pages = [
     "/",
-    "/movies"
+    "/filmy"
   ]
   const path = usePathname();
   return (
