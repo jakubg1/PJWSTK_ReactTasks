@@ -1,6 +1,8 @@
 export const initialFilmState = {films: [], loading: false, error: null, query: "", favorites: [], notifications: []}
 
 export function filmReducer(state, action) {
+    if (action == state)
+        return // For some reason calling `useReducer` causes the reducer to execute with both `state` and `action` being the state.
     switch (action.type) {
         case "FETCH_START":
             return {...state, loading: true, error: null}

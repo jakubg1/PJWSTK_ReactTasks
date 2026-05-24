@@ -21,7 +21,7 @@ export default function MovieList({params}) {
     }
 
     function search() {
-        dispatch(state, {type: "SET_QUERY", payload: searchRef.current?.value})
+        dispatch({type: "SET_QUERY", payload: searchRef.current?.value})
     }
     
     if (state.loading)
