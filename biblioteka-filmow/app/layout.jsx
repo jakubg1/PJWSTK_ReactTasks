@@ -1,8 +1,8 @@
 'use client';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import Nav from "../components/Nav";
+import {FilmProvider} from "../context/FilmContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,27 +14,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-function Nav() {
-  const pages = [
-    "/",
-    "/filmy"
-  ]
-  const path = usePathname();
-  return (
-    <div>
-      {pages.map((page) => (
-        <Link key={page} href={page} style={path == page ? {color: "red"} : {}}>{page}<br/></Link>
-      ))}
-    </div>
-  )
-}
-
 export default function RootLayout({
   children,
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body><Nav/>{children}</body>
+      <body>
+        <FilmProvider>
+          <Nav/>
+          {children}
+        </FilmProvider>
+      </body>
     </html>
   );
 }
