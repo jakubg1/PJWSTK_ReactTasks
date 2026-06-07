@@ -1,10 +1,11 @@
-"use client";
 import {useEffect, useRef, useState} from "react";
 import {useFilmState, useFilmDispatch} from "../../context/FilmContext";
 import useFetch from "../../hooks/useFetch";
 import Link from "next/link";
 
-export default function MovieList({params}) {
+export const revalidate = 60;
+
+export default async function MovieList({params}) {
     const state = useFilmState()
     const dispatch = useFilmDispatch()
 
@@ -23,11 +24,6 @@ export default function MovieList({params}) {
     function search() {
         dispatch({type: "SET_QUERY", payload: searchRef.current?.value})
     }
-    
-    if (state.loading)
-        return <p>wczytywanie...</p>;
-    if (state.error)
-        return <p>BŁĄD: {state.error}</p>;
 
     return (
         <div>
